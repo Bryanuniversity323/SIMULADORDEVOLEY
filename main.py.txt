@@ -1,0 +1,91 @@
+import random
+
+class Equipo:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.partidosGanados = 0
+        self.partidosPerdidos = 0
+        self.setGanados = 0
+
+    def __str__(self):
+        return f"{self.nombre}: {self.partidosGanados} ganados, {self.partidosPerdidos} perdidos, {self.setGanados} sets ganados"
+
+def generarPuntos():
+    """Genera puntos aleatorios para un set, entre 10 y 28"""
+    return random.randint(10, 28)
+
+def puntosExtras():
+    """Genera puntos extra entre 0 y 6 en caso de empate"""
+    return random.randint(0, 6)
+
+def registrarSet(ganoEquipo, perdioEquipo):
+    """Registra el resultado de un set"""
+    ganoEquipo.setGanados += 1
+    if ganoEquipo.setGanados == 3:
+        ganoEquipo.partidosGanados += 1
+        perdioEquipo.partidosPerdidos += 1
+        ganoEquipo.setGanados = 0
+        perdioEquipo.setGanados = 0
+
+def jugarPartido(equipo1, equipo2):
+    """Simula un partido completo entre dos equipos"""
+    while True:
+        puntosEquipo1 = generarPuntos()
+        puntosEquipo2 = generarPuntos()
+
+        if puntosEquipo1 >= 25 or puntosEquipo2 >= 25:
+            if puntosEquipo1 > puntosEquipo2:
+                registrarSet(equipo1, equipo2)
+                break
+            elif puntosEquipo2 > puntosEquipo1:
+                registrarSet(equipo2, equipo1)
+                break
+            else:
+               
+                puntosEquipo1 += puntosExtras()
+                puntosEquipo2 += puntosExtras()
+                if puntosEquipo1 >= 25 or puntosEquipo2 >= 25:
+                    if puntosEquipo1 > puntosEquipo2:
+                        registrarSet(equipo1, equipo2)
+                        break
+                    elif puntosEquipo2 > puntosEquipo1:
+                        registrarSet(equipo2, equipo1)
+                        break
+        else:
+         
+            puntosEquipo1 += puntosExtras()
+            puntosEquipo2 += puntosExtras()
+            if puntosEquipo1 >= 25 or puntosEquipo2 >= 25:
+                if puntosEquipo1 > puntosEquipo2:
+                    registrarSet(equipo1, equipo2)
+                    break
+                elif puntosEquipo2 > puntosEquipo1:
+                    registrarSet(equipo2, equipo1)
+                    break
+
+def resultadoTorneo(equipo1, equipo2):
+    """Muestra los resultados finales del torneo"""
+    print("RESULTADOS DEL TORNEO")
+    print(f"Equipo {equipo1.nombre}: {equipo1.partidosGanados} partidos ganados, {equipo1.partidosPerdidos} partidos perdidos.")
+    print(f"Equipo {equipo2.nombre}: {equipo2.partidosGanados} partidos ganados, {equipo2.partidosPerdidos} partidos perdidos.")
+
+def main():
+    """Función principal que maneja la lógica del torneo"""
+    print("¡Bienvenido al simulador de torneo de voleibol!")
+    nombreEquipo1 = input("Ingrese el nombre del primer equipo: ")
+    nombreEquipo2 = input("Ingrese el nombre del segundo equipo: ")
+
+    equipo1 = Equipo(nombreEquipo1)
+    equipo2 = Equipo(nombreEquipo2)
+
+    partidos = int(input("¿Cuántos partidos deben jugar los equipos? "))
+
+    for i in range(partidos):
+        print(Partido {i + 1}:")
+        jugarPartido(equipo1, equipo2)
+
+    resultadoTorneo(equipo1, equipo2)
+
+if __name__ == "__main__":
+    main()
+
