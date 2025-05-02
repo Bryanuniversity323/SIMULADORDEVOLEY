@@ -11,15 +11,15 @@ class Equipo:
         return f"{self.nombre}: {self.partidosGanados} ganados, {self.partidosPerdidos} perdidos, {self.setGanados} sets ganados"
 
 def generarPuntos():
-    """Genera puntos aleatorios para un set, entre 10 y 28"""
+    "Genera puntos aleatorios para un set, entre 10 y 28"
     return random.randint(10, 28)
 
 def puntosExtras():
-    """Genera puntos extra entre 0 y 6 en caso de empate"""
+    "Genera puntos extra entre 0 y 6 en caso de empate"
     return random.randint(0, 6)
 
 def registrarSet(ganoEquipo, perdioEquipo):
-    """Registra el resultado de un set"""
+    "Registra el resultado de un set"
     ganoEquipo.setGanados += 1
     if ganoEquipo.setGanados == 3:
         ganoEquipo.partidosGanados += 1
@@ -28,7 +28,7 @@ def registrarSet(ganoEquipo, perdioEquipo):
         perdioEquipo.setGanados = 0
 
 def jugarPartido(equipo1, equipo2):
-    """Simula un partido completo entre dos equipos"""
+    "Simula un partido completo entre dos equipos"
     while True:
         puntosEquipo1 = generarPuntos()
         puntosEquipo2 = generarPuntos()
@@ -64,13 +64,13 @@ def jugarPartido(equipo1, equipo2):
                     break
 
 def resultadoTorneo(equipo1, equipo2):
-    """Muestra los resultados finales del torneo"""
+    "Muestra los resultados finales del torneo"
     print("RESULTADOS DEL TORNEO")
     print(f"Equipo {equipo1.nombre}: {equipo1.partidosGanados} partidos ganados, {equipo1.partidosPerdidos} partidos perdidos.")
     print(f"Equipo {equipo2.nombre}: {equipo2.partidosGanados} partidos ganados, {equipo2.partidosPerdidos} partidos perdidos.")
 
 def main():
-    """Función principal que maneja la lógica del torneo"""
+    "Función principal que maneja la lógica del torneo"
     print("¡Bienvenido al simulador de torneo de voleibol!")
     nombreEquipo1 = input("Ingrese el nombre del primer equipo: ")
     nombreEquipo2 = input("Ingrese el nombre del segundo equipo: ")
