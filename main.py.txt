@@ -28,13 +28,13 @@ def RegistraSet(equipo_ganador):
     if equipo1.setGanados == 3:
         equipo1.partidosGanados += 1
         equipo2.partidosPerdidos += 1
-        print(🏆 {equipo1.nombre} gana el partido!\n")
+        print(f"\n🏆 {equipo1.nombre} gana el partido!\n")
         equipo1.setGanados = 0
         equipo2.setGanados = 0
     elif equipo2.setGanados == 3:
         equipo2.partidosGanados += 1
         equipo1.partidosPerdidos += 1
-        print(🏆 {equipo2.nombre} gana el partido!\n")
+        print(f"\n🏆 {equipo2.nombre} gana el partido!\n")
         equipo1.setGanados = 0
         equipo2.setGanados = 0
 
